@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './rootApp';
 import * as serviceWorker from './serviceWorker';
 
-import { Stitch } from "mongodb-stitch-server-sdk";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
