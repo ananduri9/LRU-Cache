@@ -7,9 +7,13 @@ import {
   getCurrentUser,
 } from "./../Stitch/authentication";
 
+interface PropsType {
+  children?: React.ReactNode;
+}
+
 // Create a React Context that lets us expose and access auth state
 // without passing props through many levels of the component tree
-const StitchAuthContext = React.createContext();
+const StitchAuthContext = React.createContext({});
 
 // Create a React Hook that lets us get data from our auth context
 export function useStitchAuth() {
@@ -22,7 +26,7 @@ export function useStitchAuth() {
 
 // Create a component that controls auth state and exposes it via
 // the React Context we created.
-export function StitchAuthProvider(props) {
+export const StitchAuthProvider = (props: PropsType) => {
   const [authState, setAuthState] = React.useState({
     isLoggedIn: hasLoggedInUser(),
     currentUser: getCurrentUser(),

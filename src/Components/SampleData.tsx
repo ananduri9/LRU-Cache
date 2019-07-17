@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { app } from './Stitch/';
-import { StitchAuthProvider, useStitchAuth } from "./Components/StitchAuth";
+import { app } from '../Stitch/';
+import { StitchAuthProvider } from "./StitchAuth";
 import { Button } from "reactstrap";
 import { any } from 'prop-types';
 import {
@@ -10,16 +10,17 @@ import {
   loginAnonymous,
   logoutCurrentUser,
   getCurrentUser,
-} from "./Stitch/authentication";
+} from "../Stitch/authentication";
 
 interface initialState {
   err: any;
   result: any;
 }
-// const {
-//   isLoggedIn,
-//   actions,
-// } = useStitchAuth();
+
+const newItem = {
+  "name": "samepleItem",
+  "quantity": 10
+};
 
 class SampleData extends React.Component<{}, initialState> {
   readonly state: initialState = {
@@ -30,8 +31,8 @@ class SampleData extends React.Component<{}, initialState> {
   handleOnClick = () => {
     if (hasLoggedInUser()) {
       app.callFunction("findOne", [{}, "LRU", "sample_weatherdata", "data"])
-      .then( res => this.setState({result: res.timestamp}))
-      .catch( err => this.setState({err: err}));
+      .then( (res: any) => this.setState({result: res.timestamp}))
+      .catch( (err: any) => this.setState({err: err}));
     }
     else {
       loginAnonymous().then(() => app.callFunction("findOne", [{}, "LRU", "sample_weatherdata", "data"]))
@@ -40,25 +41,24 @@ class SampleData extends React.Component<{}, initialState> {
     }
   }
 
+  insertDoc = () => {
+    app.callFunction("insertOne", [newItem, "LRU", "sample_weatherdata", "data"])
+  }
+
   render() {
     return (
       <div className="data">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>Results from query: 
+          Results from query: 
           <Button onClick={this.handleOnClick}>Click Here to Login And Get Results</Button>
           {hasLoggedInUser() && this.state.result}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>
+          Insert a document:
+          {hasLoggedInUser() && <Button onClick={this.insertDoc}>Click Here to insert a sample Document</Button>}
+
+        </p>
       </div>
     );
   } 

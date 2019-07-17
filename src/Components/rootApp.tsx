@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { app } from './Stitch/'
-import { StitchAuthProvider, useStitchAuth } from "./Components/StitchAuth";
+import { app } from '../Stitch/'
+import { StitchAuthProvider } from "./StitchAuth";
 import SampleData from "./SampleData"
 import { Button } from "reactstrap"
 

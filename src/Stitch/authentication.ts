@@ -20,5 +20,5 @@ export function getCurrentUser() {
 export function logoutCurrentUser() {
   // Logout the currently logged in user
   const user = getCurrentUser();
-  return app.auth.logoutUserWithId(user.id);
+  return app.auth.logoutUserWithId(user!.id);
 }
