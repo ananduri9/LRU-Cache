@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from "../Style/logo.svg"
 import '../Style/App.css';
-import { app } from '../Stitch/';
 import { Button } from "reactstrap";
 import SampleData from "./SampleData";
+import Title from "./Title";
 import {
   hasLoggedInUser,
   loginAnonymous,
@@ -21,21 +20,23 @@ class Login extends React.Component<{}, initialState> {
   handleLogin = async () => {
     if(!this.state.isLoggedIn){
       await loginAnonymous()
+      this.setState({isLoggedIn: true})
     }
   }
 
   render() {
     return (
       <div className="data">
-        <p>{
+        {!this.state.isLoggedIn && <Title/>}
+        <div>{
           this.state.isLoggedIn ?
-          <Button onClick={this.handleLogin}>Click Here to Login</Button> :
-          <SampleData/>
+          <SampleData/> :
+          <Button onClick={this.handleLogin}>Click Here to Login</Button>
         } 
-        </p>
+        </div>
       </div>
     );
   }
 }
 
-export default SampleData;
+export default Login;
