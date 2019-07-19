@@ -1,0 +1,6 @@
+{
+    "id": "5d2f7ed8617fc44af1a52243",
+    "name": "SERVICE_NAME",
+    "value": "LRU",
+    "from_secret": false
+}

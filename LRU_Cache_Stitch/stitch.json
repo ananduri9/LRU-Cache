@@ -1,0 +1,8 @@
+{
+    "app_id": "lru_cache-wajyi",
+    "config_version": 20180301,
+    "name": "LRU_Cache",
+    "location": "US-VA",
+    "deployment_model": "GLOBAL",
+    "security": {}
+}

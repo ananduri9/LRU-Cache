@@ -1,0 +1,11 @@
+{
+    "id": "5d2cc1404b8b69f018ce62de",
+    "name": "LRU",
+    "type": "mongodb-atlas",
+    "config": {
+        "clusterName": "Cluster0",
+        "readPreference": "primary",
+        "wireProtocolEnabled": true
+    },
+    "version": 1
+}

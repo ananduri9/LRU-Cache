@@ -1,0 +1,6 @@
+{
+    "id": "5d2f7eee1331afcfb828b97f",
+    "name": "DB_NAME",
+    "value": "testdb",
+    "from_secret": false
+}
